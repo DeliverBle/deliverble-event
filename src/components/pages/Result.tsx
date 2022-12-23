@@ -7,8 +7,9 @@ function Result() {
   const name = 'test';
 
   const handleCopy = async () => {
+    const link = window.location.href.replace('/result', '');
     try {
-      await navigator.clipboard.writeText(window.location.href);
+      await navigator.clipboard.writeText(link);
       alert('링크를 복사했어요.');
     } catch (e) {
       alert('다시 한번 시도해 보세요.');
