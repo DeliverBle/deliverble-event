@@ -1,12 +1,14 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
 import Result from '../pages/Result';
+import Header from './Header';
 import ScrollToTop from './ScrollToTop';
 
 function Router() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/result" element={<Result />} />
