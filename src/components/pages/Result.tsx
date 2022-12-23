@@ -7,7 +7,7 @@ function Result() {
   const name = 'test';
 
   const handleCopy = async () => {
-    const link = window.location.href.replace('/result', '');
+    const link = 'https://deliverble-event.netlify.app';
     try {
       await navigator.clipboard.writeText(link);
       alert('링크를 복사했어요.');
