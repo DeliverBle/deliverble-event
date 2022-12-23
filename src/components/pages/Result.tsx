@@ -16,17 +16,19 @@ function Result() {
   };
 
   return (
-    <StResult>
-      <p>
-        2023년 나에게 주는 첫번째 선물,
-        <br />
-        딜리버블이 예약되었습니다.
-      </p>
-      <h1>
-        달라질 {name}님의 목소리를
-        <br />
-        응원합니다!
-      </h1>
+    <div>
+      <StContent>
+        <p>
+          2023년 나에게 주는 첫번째 선물,
+          <br />
+          딜리버블이 예약되었습니다.
+        </p>
+        <h1>
+          달라질 {name}님의 목소리를
+          <br />
+          응원합니다!
+        </h1>
+      </StContent>
       <StButtonContainer>
         <StDownloadButton>
           <img src={icDownload} alt="" />
@@ -37,13 +39,18 @@ function Result() {
           링크 복사
         </StCopyButton>
       </StButtonContainer>
-    </StResult>
+    </div>
   );
 }
 
 export default Result;
 
-const StResult = styled.div`
+const StContent = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(38rem, calc(100% - 4rem));
   text-align: center;
 
   p {
