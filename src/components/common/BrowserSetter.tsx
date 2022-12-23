@@ -9,7 +9,7 @@ function BrowserSetter() {
       if (agent.includes('kakao')) {
         window.location.href = 'kakaotalk://inappbrowser/close';
       } else if (agent.includes('instagram')) {
-        window.location.href = 'instagram://inappbrowser/close';
+        window.close();
       }
 
       if (isIOS) {
