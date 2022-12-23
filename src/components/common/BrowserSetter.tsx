@@ -8,13 +8,14 @@ function BrowserSetter() {
 
     if (isInAppBrowser !== null) {
       const isIOS = navigator.userAgent.match(/iPhone|iPad/i);
+      const hrefString = window.location.href;
+      window.close();
+
       if (isIOS) {
-        window.location.href = 'googlechrome://' + window.location.href.replace(/https?:\/\//i, '');
+        window.location.href = 'googlechrome://' + hrefString.replace(/https?:\/\//i, '');
       } else {
         window.location.href =
-          'intent://' +
-          window.location.href.replace(/https?:\/\//i, '') +
-          '#Intent;scheme=http;package=com.android.chrome;end';
+          'intent://' + hrefString.replace(/https?:\/\//i, '') + '#Intent;scheme=http;package=com.android.chrome;end';
       }
     }
   }, []);
