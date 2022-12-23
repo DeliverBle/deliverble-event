@@ -16,8 +16,9 @@ function Result() {
   };
 
   return (
-    <div>
+    <StResult>
       <StContent>
+        <StImageWrapper />
         <p>
           2023년 나에게 주는 첫번째 선물,
           <br />
@@ -39,19 +40,24 @@ function Result() {
           링크 복사
         </StCopyButton>
       </StButtonContainer>
-    </div>
+    </StResult>
   );
 }
 
 export default Result;
 
+const StResult = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.2rem;
+`;
+
 const StContent = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(38rem, calc(100% - 4rem));
   text-align: center;
+  flex: 1;
 
   p {
     ${FONT_STYLES.M_18}
@@ -63,13 +69,18 @@ const StContent = styled.div`
   }
 `;
 
+const StImageWrapper = styled.div`
+  width: 36rem;
+  height: 36rem;
+  margin: 0 auto;
+`;
+
 const StButtonContainer = styled.div`
   display: flex;
   align-items: center;
-  padding: 0 2.8rem;
-  position: fixed;
-  bottom: 8rem;
-  width: min(38rem, calc(100% - 4rem));
+  gap: 1.2rem;
+  width: 100%;
+  padding: 0 2.8rem 8rem 2.8rem;
 `;
 
 const StButton = styled.button`
@@ -90,5 +101,4 @@ const StDownloadButton = styled(StButton)`
 
 const StCopyButton = styled(StButton)`
   background-color: ${COLOR.MAIN_BLUE};
-  margin-left: 1.2rem;
 `;
