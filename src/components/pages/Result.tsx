@@ -78,6 +78,10 @@ const StButton = styled.button`
   justify-content: center;
   width: 100%;
   text-align: center;
+
+  & > img {
+    margin-right: 0.8rem;
+  }
 `;
 
 const StDownloadButton = styled(StButton)`
