@@ -81,7 +81,7 @@ const StButtonContainer = styled.div`
   align-items: center;
   gap: 1.2rem;
   width: 100%;
-  padding: 0 2.8rem 8rem 2.8rem;
+  padding: 8rem 2.8rem;
 `;
 
 const StButton = styled.button`
