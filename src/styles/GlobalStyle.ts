@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import emotionReset from 'emotion-reset';
+import { COLOR } from './color';
 
 export const GlobalStyle = css`
   ${emotionReset}
@@ -16,11 +17,16 @@ export const GlobalStyle = css`
     max-width: 42rem;
     min-height: 100vh;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 0 2rem;
   }
 
   html {
     font-size: 62.5%;
+  }
+
+  body {
+    background-color: ${COLOR.BLACK};
+    color: ${COLOR.WHITE};
   }
 
   * {
@@ -36,10 +42,12 @@ export const GlobalStyle = css`
   }
 
   button {
+    color: ${COLOR.WHITE};
+    padding: 1.4rem 0;
+    border-radius: 1rem;
     cursor: pointer;
     border: none;
     outline: none;
-    background-color: transparent;
     -webkit-tap-highlight-color: transparent;
   }
 
