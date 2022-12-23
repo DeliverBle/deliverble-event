@@ -12,9 +12,6 @@ function Header() {
 export default Header;
 
 const StHeader = styled.div`
-  position: fixed;
-  top: 0;
-  width: min(38rem, calc(100% - 4rem));
   height: 5.4rem;
   padding: 1.2rem 0;
 

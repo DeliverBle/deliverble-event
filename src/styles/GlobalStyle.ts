@@ -12,8 +12,8 @@ export const GlobalStyle = css`
   }
 
   #root {
-    display: grid;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
     max-width: 42rem;
     min-height: 100vh;
     margin: 0 auto;
