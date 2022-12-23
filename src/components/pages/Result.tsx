@@ -6,6 +6,15 @@ import { FONT_STYLES } from '../../styles/font';
 function Result() {
   const name = 'test';
 
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      alert('링크를 복사했어요.');
+    } catch (e) {
+      alert('다시 한번 시도해 보세요.');
+    }
+  };
+
   return (
     <StResult>
       <p>
@@ -23,7 +32,7 @@ function Result() {
           <img src={icDownload} alt="" />
           이미지 저장
         </StDownloadButton>
-        <StCopyButton>
+        <StCopyButton onClick={handleCopy}>
           <img src={icCopy} alt="" />
           링크 복사
         </StCopyButton>
