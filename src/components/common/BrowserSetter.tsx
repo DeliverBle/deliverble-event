@@ -5,12 +5,8 @@ function BrowserSetter() {
     const agent = navigator.userAgent.toLowerCase();
     const isIOS = navigator.userAgent.match(/iPhone|iPad/i);
 
-    if (agent.indexOf('kakao') > -1 || agent.indexOf('Instagram') > -1) {
-      if (agent.includes('kakao')) {
-        window.location.href = 'kakaotalk://inappbrowser/close';
-      } else if (agent.includes('Instagram')) {
-        window.location.href = 'instagram://inappbrowser/close';
-      }
+    if (agent.indexOf('kakao') > -1 || agent.indexOf('instagram') > -1) {
+      window.close();
 
       if (isIOS) {
         window.location.href = 'googlechrome://' + window.location.href.replace(/https?:\/\//i, '');
