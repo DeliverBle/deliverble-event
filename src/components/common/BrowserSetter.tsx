@@ -2,19 +2,23 @@ import { useEffect } from 'react';
 
 function BrowserSetter() {
   useEffect(() => {
-    const isInAppBrowser = navigator.userAgent.match(
-      /inapp|NAVER|KAKAOTALK|Snapchat|Line|WirtschaftsWoche|Thunderbird|Instagram|everytimeApp|WhatsApp|Electron|wadiz|AliApp|zumapp|iPhone(.*)Whale|Android(.*)Whale|kakaostory|band|twitter|DaumApps|DaumDevice\/mobile|FB_IAB|FB4A|FBAN|FBIOS|FBSS|SamsungBrowser\/[^1]/i,
-    );
-    const hrefString = window.location.href;
-    window.close();
+    const agent = navigator.userAgent.toLowerCase();
+    const isIOS = navigator.userAgent.match(/iPhone|iPad/i);
 
-    if (isInAppBrowser !== null) {
-      const isIOS = navigator.userAgent.match(/iPhone|iPad/i);
+    if (agent.indexOf('kakao') > -1 || agent.indexOf('instagram') > -1) {
+      if (agent.includes('kakao')) {
+        window.location.href = 'kakaotalk://inappbrowser/close';
+      } else if (agent.includes('instagram')) {
+        window.location.href = 'instagram://inappbrowser/close';
+      }
+
       if (isIOS) {
-        window.location.href = 'googlechrome://' + hrefString.replace(/https?:\/\//i, '');
+        window.location.href = 'googlechrome://' + window.location.href.replace(/https?:\/\//i, '');
       } else {
         window.location.href =
-          'intent://' + hrefString.replace(/https?:\/\//i, '') + '#Intent;scheme=http;package=com.android.chrome;end';
+          'intent://' +
+          window.location.href.replace(/https?:\/\//i, '') +
+          '#Intent;scheme=http;package=com.android.chrome;end';
       }
     }
   }, []);
