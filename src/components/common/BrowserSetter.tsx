@@ -5,10 +5,10 @@ function BrowserSetter() {
     const agent = navigator.userAgent.toLowerCase();
     const isIOS = navigator.userAgent.match(/iPhone|iPad/i);
 
-    if (agent.indexOf('kakao') > -1 || agent.indexOf('instagram') > -1) {
+    if (agent.indexOf('kakao') > -1 || agent.indexOf('Instagram') > -1) {
       if (agent.includes('kakao')) {
         window.location.href = 'kakaotalk://inappbrowser/close';
-      } else if (agent.includes('instagram')) {
+      } else if (agent.includes('Instagram')) {
         window.location.href = 'instagram://inappbrowser/close';
       }
 
