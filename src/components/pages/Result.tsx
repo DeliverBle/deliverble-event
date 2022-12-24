@@ -1,13 +1,15 @@
 import styled from '@emotion/styled';
 import html2canvas from 'html2canvas';
 import { useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { icCopy, icDownload } from '../../assets/icons';
 import { imgTest } from '../../assets/images';
 import { COLOR } from '../../styles/color';
 import { FONT_STYLES } from '../../styles/font';
 
 function Result() {
-  const name = 'test';
+  const location = useLocation();
+  const name = location.state ? `${location.state.name}님` : '당신';
   const downloadRef = useRef<HTMLDivElement>(null);
 
   const handleDownload = () => {
@@ -51,7 +53,7 @@ function Result() {
           딜리버블이 예약되었습니다.
         </p>
         <h1>
-          달라질 {name}님의 목소리를
+          달라질 {name}의 목소리를
           <br />
           응원합니다!
         </h1>
