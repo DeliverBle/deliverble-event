@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
-import { imgLogo } from '../../assets/images';
+import { icLogo } from '../../assets/icons';
 
 function Header() {
   return (
     <StHeader>
-      <img src={imgLogo} alt="딜리버블" />
+      <img src={icLogo} alt="딜리버블" />
     </StHeader>
   );
 }
