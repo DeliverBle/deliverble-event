@@ -1,10 +1,35 @@
 import styled from '@emotion/styled';
+import html2canvas from 'html2canvas';
+import { useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { icCopy, icDownload } from '../../assets/icons';
+import { imgTest } from '../../assets/images';
 import { COLOR } from '../../styles/color';
 import { FONT_STYLES } from '../../styles/font';
 
 function Result() {
-  const name = 'test';
+  const location = useLocation();
+  const name = location.state ? `${location.state.name}님` : '당신';
+  const downloadRef = useRef<HTMLDivElement>(null);
+
+  const handleDownload = () => {
+    if (downloadRef.current) {
+      html2canvas(downloadRef.current, { backgroundColor: COLOR.BLACK })
+        .then((canvas) => {
+          const link = document.createElement('a');
+          document.body.appendChild(link);
+          link.href = canvas.toDataURL('image/png');
+          link.download = '딜리버블.png';
+          link.click();
+          document.body.removeChild(link);
+          alert('이미지를 저장했어요.');
+        })
+        .catch((e) => {
+          console.error(e);
+          alert('다시 한번 시도해 보세요.');
+        });
+    }
+  };
 
   const handleCopy = async () => {
     const link = window.location.href.replace('/result', '');
@@ -18,21 +43,23 @@ function Result() {
 
   return (
     <StResult>
-      <StContent>
-        <StImageWrapper />
+      <StContent ref={downloadRef}>
+        <StImageWrapper>
+          <img src={imgTest} alt="" />
+        </StImageWrapper>
         <p>
-          2023년 나에게 주는 첫번째 선물,
+          2023년 나에게 주는 첫 번째 선물,
           <br />
           딜리버블이 예약되었습니다.
         </p>
         <h1>
-          달라질 {name}님의 목소리를
+          달라질 {name}의 목소리를
           <br />
           응원합니다!
         </h1>
       </StContent>
       <StButtonContainer>
-        <StDownloadButton>
+        <StDownloadButton onClick={handleDownload}>
           <img src={icDownload} alt="" />
           이미지 저장
         </StDownloadButton>
@@ -53,12 +80,16 @@ const StResult = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 1.2rem;
 `;
 
 const StContent = styled.div`
+  width: 100%;
+  aspect-ratio: 9 / 16;
   text-align: center;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   p {
     ${FONT_STYLES.M_18}
@@ -71,9 +102,12 @@ const StContent = styled.div`
 `;
 
 const StImageWrapper = styled.div`
-  width: 36rem;
-  height: 36rem;
   margin: 0 auto;
+
+  & > img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
 `;
 
 const StButtonContainer = styled.div`
@@ -81,7 +115,7 @@ const StButtonContainer = styled.div`
   align-items: center;
   gap: 1.2rem;
   width: 100%;
-  padding: 8rem 2.8rem;
+  padding: 0 2.8rem 8rem 2.8rem;
 `;
 
 const StButton = styled.button`

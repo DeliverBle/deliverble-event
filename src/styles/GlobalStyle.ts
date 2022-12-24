@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import emotionReset from 'emotion-reset';
 import { COLOR } from './color';
+import { FONT_STYLES } from './font';
 
 export const GlobalStyle = css`
   ${emotionReset}
@@ -42,6 +43,7 @@ export const GlobalStyle = css`
   }
 
   button {
+    ${FONT_STYLES.B_17}
     color: ${COLOR.WHITE};
     padding: 1.4rem 0;
     border-radius: 1rem;
