@@ -1,1 +1,1 @@
-export { default as imgTest } from '../images/img_test.gif';
+export { default as imgLetter } from '../images/img_letter.gif';

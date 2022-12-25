@@ -3,7 +3,7 @@ import html2canvas from 'html2canvas';
 import { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { icCopy, icDownload } from '../../assets/icons';
-import { imgTest } from '../../assets/images';
+import { imgLetter } from '../../assets/images';
 import { COLOR } from '../../styles/color';
 import { FONT_STYLES } from '../../styles/font';
 
@@ -45,7 +45,7 @@ function Result() {
     <StResult>
       <StContent ref={downloadRef}>
         <StImageWrapper>
-          <img src={imgTest} alt="" />
+          <img src={imgLetter} alt="" />
         </StImageWrapper>
         <p>
           2023년 나에게 주는 첫 번째 선물,
@@ -80,10 +80,11 @@ const StResult = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
 `;
 
 const StContent = styled.div`
-  width: 100%;
+  width: calc(100% + 4rem);
   aspect-ratio: 9 / 16;
   text-align: center;
   flex: 1;
@@ -106,23 +107,23 @@ const StImageWrapper = styled.div`
 
   & > img {
     width: 100%;
-    aspect-ratio: 1 / 1;
   }
 `;
 
 const StButtonContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1.2rem;
   width: 100%;
-  padding: 0 2.8rem 8rem 2.8rem;
+  padding-bottom: 8rem;
 `;
 
 const StButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 15.6rem;
   text-align: center;
 
   & > img {
