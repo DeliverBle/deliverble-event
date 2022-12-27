@@ -70,6 +70,7 @@ function Home() {
             id="email"
             placeholder="(필수) 이메일을 입력해주세요."
             onChange={(e) => handleEmailChange(e.target)}
+            autoComplete="off"
           />
         </StInput>
         <StInput>
@@ -79,6 +80,7 @@ function Home() {
             type="text"
             placeholder="(선택) 이름 또는 닉네임을 입력해주세요."
             onChange={handleNameChange}
+            autoComplete="off"
           />
           <div>
             {nameLength}/{MAX_COUNT}
