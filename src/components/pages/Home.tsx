@@ -5,11 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import { imgMic } from '../../assets/images';
 import { COLOR } from '../../styles/color';
 import { FONT_STYLES } from '../../styles/font';
-import { createUserData } from '../../utils/api';
+import { createUserData } from '../../lib/api';
 
 export interface UserData {
-  nickname: string;
-  email?: string;
+  nickname?: string;
+  email: string;
 }
 
 function Home() {
@@ -53,7 +53,7 @@ function Home() {
 
     const nickname = nameInputRef.current?.value;
     const email = emailInputRef.current?.value;
-    if (nickname) {
+    if (email) {
       const { nickname: name } = await createUserData({
         nickname,
         email,
