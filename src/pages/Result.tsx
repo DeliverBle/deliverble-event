@@ -78,9 +78,8 @@ const StResult = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  height: 100%;
 `;
 
 const StContent = styled.div`
