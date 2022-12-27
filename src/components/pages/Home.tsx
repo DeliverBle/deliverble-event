@@ -58,7 +58,7 @@ function Home() {
         nickname,
         email,
       });
-      nickname ? navigate('/result', { state: { name } }) : navigate('/result');
+      navigate('/result', nickname ? { state: { name } } : {});
     }
   };
 
