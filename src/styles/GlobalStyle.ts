@@ -26,7 +26,7 @@ export const GlobalStyle = css`
   }
 
   body {
-    background-color: ${COLOR.BLACK};
+    background-color: ${COLOR.BLACK_80};
     color: ${COLOR.WHITE};
   }
 
@@ -61,5 +61,17 @@ export const GlobalStyle = css`
 
   input {
     outline: none;
+  }
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px ${COLOR.BLACK_60} inset;
+    box-shadow: 0 0 0px 1000px ${COLOR.BLACK_60} inset;
+    -webkit-text-fill-color: ${COLOR.WHITE};
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
   }
 `;
