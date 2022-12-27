@@ -87,6 +87,9 @@ const StResult = styled.div`
 const StContent = styled.div`
   width: calc(100% + 4rem);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   p {
     ${FONT_STYLES.M_18}
