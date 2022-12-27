@@ -14,6 +14,7 @@ function Result() {
 
   const handleDownload = () => {
     if (downloadRef.current) {
+      downloadRef.current.style.aspectRatio = '9 / 16';
       html2canvas(downloadRef.current, { backgroundColor: COLOR.BLACK_80 })
         .then((canvas) => {
           const link = document.createElement('a');
@@ -28,6 +29,7 @@ function Result() {
           console.error(e);
           alert('다시 한번 시도해 보세요.');
         });
+      downloadRef.current.style.aspectRatio = 'auto';
     }
   };
 
@@ -84,9 +86,7 @@ const StResult = styled.div`
 
 const StContent = styled.div`
   width: calc(100% + 4rem);
-  aspect-ratio: 9 / 16;
   text-align: center;
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -96,7 +96,7 @@ const StContent = styled.div`
   }
 
   h1 {
-    margin-top: 1.6rem;
+    margin: 1.6rem 0 9.6rem 0;
     ${FONT_STYLES.SB_25}
   }
 `;
