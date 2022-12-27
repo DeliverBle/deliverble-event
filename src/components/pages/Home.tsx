@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { imgMic } from '../../assets/images';
 import { COLOR } from '../../styles/color';
@@ -7,6 +8,24 @@ import { FONT_STYLES } from '../../styles/font';
 function Home() {
   const name = '이름';
   const navigate = useNavigate();
+  const nameInputRef = useRef<HTMLInputElement>(null);
+  const [nameLength, setNameLength] = useState(0);
+
+  const handleNameChange = () => {
+    const nameInput = nameInputRef.current;
+    if (nameInput) {
+      const text = [...new Intl.Segmenter().segment(nameInput.value)];
+      let length = text.length;
+      if (length > 5) {
+        nameInput.value = text
+          .slice(0, 5)
+          .map((el) => el.segment)
+          .join('');
+        length = 5;
+      }
+      setNameLength(length);
+    }
+  };
 
   const handleClick = () => {
     navigate('/result', { state: { name } });
@@ -38,8 +57,13 @@ function Home() {
         </StInput>
         <StInput>
           <label htmlFor="name">이름</label>
-          <input type="text" placeholder="(선택) 이름 또는 닉네임을 입력해주세요." />
-          <div>1/5</div>
+          <input
+            ref={nameInputRef}
+            type="text"
+            placeholder="(선택) 이름 또는 닉네임을 입력해주세요."
+            onChange={handleNameChange}
+          />
+          <div>{nameLength}/5</div>
         </StInput>
       </StForm>
       <StSubmitButton onClick={handleClick}>제출하기</StSubmitButton>
