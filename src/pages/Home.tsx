@@ -195,8 +195,7 @@ const StInput = styled.div`
     white-space: nowrap;
 
     &:focus {
-      outline: none;
-      box-shadow: 0 0 0 2px ${COLOR.WHITE};
+      border: 0.2rem solid ${COLOR.WHITE};
     }
   }
 
