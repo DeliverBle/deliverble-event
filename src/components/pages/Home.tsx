@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -8,8 +9,18 @@ import { FONT_STYLES } from '../../styles/font';
 function Home() {
   const name = '이름';
   const navigate = useNavigate();
+  const [isValidEmail, setIsValidEmail] = useState<boolean>(false);
   const nameInputRef = useRef<HTMLInputElement>(null);
-  const [nameLength, setNameLength] = useState(0);
+  const [nameLength, setNameLength] = useState<number>(0);
+
+  const handleEmailChange = (target: HTMLInputElement) => {
+    const regExp = /^[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    if (regExp.test(target.value)) {
+      setIsValidEmail(true);
+      return;
+    }
+    setIsValidEmail(false);
+  };
 
   const handleNameChange = () => {
     const nameInput = nameInputRef.current;
@@ -53,7 +64,12 @@ function Home() {
       <StForm>
         <StInput>
           <label htmlFor="email">이메일</label>
-          <input type="email" id="email" placeholder="(필수) 이메일을 입력해주세요." />
+          <input
+            type="email"
+            id="email"
+            placeholder="(필수) 이메일을 입력해주세요."
+            onChange={(e) => handleEmailChange(e.target)}
+          />
         </StInput>
         <StInput>
           <label htmlFor="name">이름</label>
@@ -66,7 +82,9 @@ function Home() {
           <div>{nameLength}/5</div>
         </StInput>
       </StForm>
-      <StSubmitButton onClick={handleClick}>제출하기</StSubmitButton>
+      <StSubmitButton isValidEmail={isValidEmail} onClick={handleClick}>
+        제출하기
+      </StSubmitButton>
     </StHome>
   );
 }
@@ -159,7 +177,15 @@ const StInput = styled.div`
   }
 `;
 
-const StSubmitButton = styled.button`
+const StSubmitButton = styled.button<{ isValidEmail: boolean }>`
   width: 12.3rem;
   background-color: ${COLOR.MAIN_BLUE};
+
+  ${({ isValidEmail }) =>
+    !isValidEmail &&
+    css`
+      disabled: true;
+      opacity: 0.4;
+      cursor: not-allowed;
+    `};
 `;
