@@ -46,9 +46,13 @@ function Home() {
   };
 
   const handleSubmitClick = async () => {
+    if (!isValidEmail) {
+      emailInputRef.current?.focus();
+      return;
+    }
+
     const nickname = nameInputRef.current?.value;
     const email = emailInputRef.current?.value;
-
     if (nickname) {
       const { nickname: name } = await createUserData({
         nickname,
@@ -103,7 +107,7 @@ function Home() {
           </div>
         </StInput>
       </StForm>
-      <StSubmitButton isValidEmail={isValidEmail} disabled={!isValidEmail} onClick={handleSubmitClick}>
+      <StSubmitButton isValidEmail={isValidEmail} onClick={handleSubmitClick}>
         제출하기
       </StSubmitButton>
     </StHome>
