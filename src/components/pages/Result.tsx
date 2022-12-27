@@ -14,7 +14,7 @@ function Result() {
 
   const handleDownload = () => {
     if (downloadRef.current) {
-      html2canvas(downloadRef.current, { backgroundColor: COLOR.BLACK })
+      html2canvas(downloadRef.current, { backgroundColor: COLOR.BLACK_80 })
         .then((canvas) => {
           const link = document.createElement('a');
           document.body.appendChild(link);

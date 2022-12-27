@@ -28,6 +28,7 @@ export const FONT = ({ size, weight, height }: Font) => css`
 `;
 
 export const FONT_STYLES = {
+  M_14: FONT({ size: 14, weight: 'M', height: 140 }),
   M_16: FONT({ size: 16, weight: 'M', height: 140 }),
   B_17: FONT({ size: 17, weight: 'B', height: 140 }),
   R_18: FONT({ size: 18, weight: 'R', height: 150 }),

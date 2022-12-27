@@ -26,7 +26,7 @@ export const GlobalStyle = css`
   }
 
   body {
-    background-color: ${COLOR.BLACK};
+    background-color: ${COLOR.BLACK_80};
     color: ${COLOR.WHITE};
   }
 
