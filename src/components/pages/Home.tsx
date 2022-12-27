@@ -5,11 +5,17 @@ import { useNavigate } from 'react-router-dom';
 import { imgMic } from '../../assets/images';
 import { COLOR } from '../../styles/color';
 import { FONT_STYLES } from '../../styles/font';
+import { createUserData } from '../../utils/api';
+
+export interface UserData {
+  nickname: string;
+  email?: string;
+}
 
 function Home() {
-  const name = '이름';
   const MAX_COUNT = 5;
   const navigate = useNavigate();
+  const emailInputRef = useRef<HTMLInputElement>(null);
   const [isValidEmail, setIsValidEmail] = useState<boolean>(false);
   const nameInputRef = useRef<HTMLInputElement>(null);
   const [nameLength, setNameLength] = useState<number>(0);
@@ -39,8 +45,17 @@ function Home() {
     }
   };
 
-  const handleClick = () => {
-    navigate('/result', { state: { name } });
+  const handleSubmitClick = async () => {
+    const nickname = nameInputRef.current?.value;
+    const email = emailInputRef.current?.value;
+
+    if (nickname) {
+      const { nickname: name } = await createUserData({
+        nickname,
+        email,
+      });
+      name && navigate('/result', { state: { name } });
+    }
   };
 
   return (
@@ -66,6 +81,7 @@ function Home() {
         <StInput>
           <label htmlFor="email">이메일</label>
           <input
+            ref={emailInputRef}
             type="email"
             id="email"
             placeholder="(필수) 이메일을 입력해주세요."
@@ -85,7 +101,7 @@ function Home() {
           </div>
         </StInput>
       </StForm>
-      <StSubmitButton isValidEmail={isValidEmail} onClick={handleClick}>
+      <StSubmitButton isValidEmail={isValidEmail} onClick={handleSubmitClick}>
         제출하기
       </StSubmitButton>
     </StHome>
