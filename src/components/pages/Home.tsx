@@ -80,7 +80,9 @@ function Home() {
             placeholder="(선택) 이름 또는 닉네임을 입력해주세요."
             onChange={handleNameChange}
           />
-          <div>{nameLength}/{MAX_COUNT}</div>
+          <div>
+            {nameLength}/{MAX_COUNT}
+          </div>
         </StInput>
       </StForm>
       <StSubmitButton isValidEmail={isValidEmail} onClick={handleClick}>
@@ -187,6 +189,7 @@ const StInput = styled.div`
 
 const StSubmitButton = styled.button<{ isValidEmail: boolean }>`
   width: 12.3rem;
+  margin-bottom: 4.8rem;
   background-color: ${COLOR.MAIN_BLUE};
 
   ${({ isValidEmail }) =>
