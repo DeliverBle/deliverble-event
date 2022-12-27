@@ -8,6 +8,7 @@ import { FONT_STYLES } from '../../styles/font';
 
 function Home() {
   const name = '이름';
+  const MAX_COUNT = 5;
   const navigate = useNavigate();
   const [isValidEmail, setIsValidEmail] = useState<boolean>(false);
   const nameInputRef = useRef<HTMLInputElement>(null);
@@ -27,12 +28,12 @@ function Home() {
     if (nameInput) {
       const text = [...new Intl.Segmenter().segment(nameInput.value)];
       let length = text.length;
-      if (length > 5) {
+      if (length > MAX_COUNT) {
         nameInput.value = text
-          .slice(0, 5)
+          .slice(0, MAX_COUNT)
           .map((el) => el.segment)
           .join('');
-        length = 5;
+        length = MAX_COUNT;
       }
       setNameLength(length);
     }
@@ -79,7 +80,7 @@ function Home() {
             placeholder="(선택) 이름 또는 닉네임을 입력해주세요."
             onChange={handleNameChange}
           />
-          <div>{nameLength}/5</div>
+          <div>{nameLength}/{MAX_COUNT}</div>
         </StInput>
       </StForm>
       <StSubmitButton isValidEmail={isValidEmail} onClick={handleClick}>
