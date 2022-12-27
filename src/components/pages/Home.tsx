@@ -85,7 +85,7 @@ function Home() {
           </div>
         </StInput>
       </StForm>
-      <StSubmitButton isValidEmail={isValidEmail} onClick={handleClick}>
+      <StSubmitButton isValidEmail={isValidEmail} disabled={!isValidEmail} onClick={handleClick}>
         제출하기
       </StSubmitButton>
     </StHome>
@@ -195,7 +195,6 @@ const StSubmitButton = styled.button<{ isValidEmail: boolean }>`
   ${({ isValidEmail }) =>
     !isValidEmail &&
     css`
-      disabled: true;
       opacity: 0.4;
       cursor: not-allowed;
     `};
