@@ -196,6 +196,7 @@ const StInput = styled.div`
 
     &:focus {
       outline: 0.2rem solid ${COLOR.WHITE};
+      border-radius: 1rem;
     }
   }
 
