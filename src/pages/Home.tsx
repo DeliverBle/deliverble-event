@@ -195,8 +195,8 @@ const StInput = styled.div`
     white-space: nowrap;
 
     &:focus {
-      outline: 0.2rem solid ${COLOR.WHITE};
-      border-radius: 1rem;
+      outline: none;
+      box-shadow: 0 0 0 2px ${COLOR.WHITE};
     }
   }
 
@@ -213,7 +213,6 @@ const StInput = styled.div`
 const StSubmitButton = styled.button<{ isValidEmail: boolean }>`
   width: 12.3rem;
   background-color: ${COLOR.MAIN_BLUE};
-  /* margin-bottom: 4.8rem; */
 
   ${({ isValidEmail }) =>
     !isValidEmail &&
