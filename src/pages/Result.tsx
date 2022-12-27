@@ -2,10 +2,10 @@ import styled from '@emotion/styled';
 import html2canvas from 'html2canvas';
 import { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { icCopy, icDownload } from '../../assets/icons';
-import { imgLetter } from '../../assets/images';
-import { COLOR } from '../../styles/color';
-import { FONT_STYLES } from '../../styles/font';
+import { icCopy, icDownload } from '../assets/icons';
+import { imgLetter } from '../assets/images';
+import { COLOR } from '../styles/color';
+import { FONT_STYLES } from '../styles/font';
 
 function Result() {
   const location = useLocation();
@@ -78,7 +78,7 @@ const StResult = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 100%;
 `;

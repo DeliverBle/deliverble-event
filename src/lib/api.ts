@@ -1,4 +1,4 @@
-import { UserData } from '../components/pages/Home';
+import { UserData } from '../pages/Home';
 const API_END_POINT = 'https://deliverble.online/event';
 
 export const request = async (url: string, options = {}) => {

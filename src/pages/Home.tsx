@@ -2,10 +2,10 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { imgMic } from '../../assets/images';
-import { COLOR } from '../../styles/color';
-import { FONT_STYLES } from '../../styles/font';
-import { createUserData } from '../../lib/api';
+import { imgMic } from '../assets/images';
+import { COLOR } from '../styles/color';
+import { FONT_STYLES } from '../styles/font';
+import { createUserData } from '../lib/api';
 
 export interface UserData {
   nickname?: string;
@@ -122,7 +122,7 @@ const StHome = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 100%;
+  margin-bottom: 4.8rem;
 `;
 
 const StInfo = styled.div`
@@ -211,7 +211,6 @@ const StInput = styled.div`
 
 const StSubmitButton = styled.button<{ isValidEmail: boolean }>`
   width: 12.3rem;
-  margin-bottom: 4.8rem;
   background-color: ${COLOR.MAIN_BLUE};
 
   ${({ isValidEmail }) =>
