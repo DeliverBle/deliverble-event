@@ -93,7 +93,9 @@ export default Home;
 
 const StHome = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   height: 100%;
 `;
@@ -104,7 +106,7 @@ const StInfo = styled.div`
 
   width: calc(100% + 4rem);
   margin-bottom: 2.4rem;
-  background: url(${imgMic}) no-repeat;
+  background: url(${imgMic}) no-repeat center;
   text-align: center;
 
   p {
@@ -139,6 +141,7 @@ const StForm = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 2.4rem;
+  width: 100%;
   margin-bottom: 1.4rem;
 `;
 
@@ -149,7 +152,7 @@ const StInput = styled.div`
   }
 
   & > input {
-    width: 38rem;
+    width: 100%;
     height: 5.2rem;
     margin-top: 0.8rem;
     padding: 1.5rem 1.6rem;
@@ -161,6 +164,10 @@ const StInput = styled.div`
 
     ${FONT_STYLES.M_16};
     color: ${COLOR.WHITE};
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     &:focus {
       outline: 0.2rem solid ${COLOR.WHITE};
