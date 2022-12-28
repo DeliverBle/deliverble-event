@@ -5,10 +5,11 @@ function BrowserSetter() {
   useEffect(() => {
     const agent = navigator.userAgent.toLowerCase();
     const isIOS = navigator.userAgent.match(/iPhone|iPad/i);
+    const link = 'https://deliverble-event.netlify.app/';
 
     if (isIOS && isWebview(navigator.userAgent)) {
       alert('크롬 또는 사파리에서 접속해 주세요.');
-      window.location.assign('googlechrome://' + window.location.href.replace(/https?:\/\//i, ''));
+      window.location.href = 'googlechrome://navigate?url=' + link;
     }
 
     if (!isIOS) {
