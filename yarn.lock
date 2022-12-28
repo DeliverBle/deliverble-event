@@ -5344,6 +5344,11 @@ is-typedarray@^1.0.0:
   resolved "https://registry.npmjs.org/is-typedarray/-/is-typedarray-1.0.0.tgz"
   integrity sha512-cyA56iCMHAh5CdzjJIa4aohJyeO1YbwLi3Jc35MmRU6poroFjIGZzUzupGiRPOjgHg9TLu43xbpwXk523fMxKA==
 
+is-ua-webview@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/is-ua-webview/-/is-ua-webview-1.1.2.tgz#20db1e21f0125dd0bd6422714e7de64a47a3cc4b"
+  integrity sha512-xX3WpvJGmT0EjmGRQxs4AgaBd4EWNr4lWCWGOgd40by6DWOQZN9RIOCsEaVp41crZqzWr8AsM+2x8UC2ZAuLPA==
+
 is-weakmap@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/is-weakmap/-/is-weakmap-2.0.1.tgz"

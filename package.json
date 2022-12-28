@@ -17,6 +17,7 @@
     "@types/react-dom": "^18.0.0",
     "emotion-reset": "^3.0.1",
     "html2canvas": "^1.4.1",
+    "is-ua-webview": "^1.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.6.0",
