@@ -7,19 +7,18 @@ function BrowserSetter() {
     const isIOS = navigator.userAgent.match(/iPhone|iPad/i);
 
     if (isIOS && isWebview(navigator.userAgent)) {
+      alert('크롬 또는 사파리에서 접속해 주세요.');
       window.location.href = 'googlechrome://' + window.location.href.replace(/https?:\/\//i, '');
     }
 
-    if (agent.indexOf('kakao') > -1 || agent.indexOf('instagram') > -1) {
-      if (agent.includes('kakao')) {
-        window.location.href = 'kakaotalk://inappbrowser/close';
-      } else if (agent.includes('instagram')) {
-        window.close();
-      }
+    if (!isIOS) {
+      if (agent.indexOf('kakao') > -1 || agent.indexOf('instagram') > -1) {
+        if (agent.includes('kakao')) {
+          window.location.href = 'kakaotalk://inappbrowser/close';
+        } else if (agent.includes('instagram')) {
+          window.close();
+        }
 
-      if (isIOS) {
-        alert('크롬 또는 사파리에서 접속해 주세요.');
-      } else {
         window.location.href =
           'intent://' +
           window.location.href.replace(/https?:\/\//i, '') +
