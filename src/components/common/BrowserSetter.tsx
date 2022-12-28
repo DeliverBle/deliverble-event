@@ -8,7 +8,7 @@ function BrowserSetter() {
 
     if (isIOS && isWebview(navigator.userAgent)) {
       alert('크롬 또는 사파리에서 접속해 주세요.');
-      window.location.href = 'googlechrome://' + window.location.href.replace(/https?:\/\//i, '');
+      window.location.assign('googlechrome://' + window.location.href.replace(/https?:\/\//i, ''));
     }
 
     if (!isIOS) {
