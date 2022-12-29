@@ -9,13 +9,13 @@ function BrowserSetter() {
 
     if (isIOS && isWebview(navigator.userAgent)) {
       alert('크롬 또는 사파리에서 접속해 주세요.');
-      window.location.href = 'googlechrome://deliverble-event.netlify.app/';
+      window.location.href = 'googlechrome://navigate?url=' + link;
     }
 
     if (!isIOS) {
       if (agent.indexOf('kakao') > -1 || agent.indexOf('instagram') > -1) {
         if (agent.includes('kakao')) {
-          window.location.href = 'googlechrome://navigate?url=' + link;
+          window.location.href = 'kakaotalk://inappbrowser/close';
         } else if (agent.includes('instagram')) {
           window.close();
         }
