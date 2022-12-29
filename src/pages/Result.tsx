@@ -1,8 +1,6 @@
 import styled from '@emotion/styled';
-import html2canvas from 'html2canvas';
-import { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { icCopy, icDownload } from '../assets/icons';
+import { icCopy } from '../assets/icons';
 import { imgLetter } from '../assets/images';
 import { COLOR } from '../styles/color';
 import { FONT_STYLES } from '../styles/font';
@@ -10,28 +8,6 @@ import { FONT_STYLES } from '../styles/font';
 function Result() {
   const location = useLocation();
   const name = location.state ? `${location.state.name}님` : '당신';
-  const downloadRef = useRef<HTMLDivElement>(null);
-
-  const handleDownload = () => {
-    if (downloadRef.current) {
-      downloadRef.current.style.aspectRatio = '9 / 16';
-      html2canvas(downloadRef.current, { backgroundColor: COLOR.BLACK_80 })
-        .then((canvas) => {
-          const link = document.createElement('a');
-          document.body.appendChild(link);
-          link.href = canvas.toDataURL('image/png');
-          link.download = '딜리버블.png';
-          link.click();
-          document.body.removeChild(link);
-          alert('이미지를 저장했어요.');
-        })
-        .catch((e) => {
-          console.error(e);
-          alert('다시 한번 시도해 보세요.');
-        });
-      downloadRef.current.style.aspectRatio = 'auto';
-    }
-  };
 
   const handleCopy = async () => {
     const link = window.location.href.replace('/result', '');
@@ -45,7 +21,7 @@ function Result() {
 
   return (
     <StResult>
-      <StContent ref={downloadRef}>
+      <StContent>
         <StImageWrapper>
           <img src={imgLetter} alt="" />
         </StImageWrapper>
@@ -60,16 +36,11 @@ function Result() {
           응원합니다!
         </h1>
       </StContent>
-      <StButtonContainer>
-        <StDownloadButton onClick={handleDownload}>
-          <img src={icDownload} alt="" />
-          이미지 저장
-        </StDownloadButton>
-        <StCopyButton onClick={handleCopy}>
-          <img src={icCopy} alt="" />
-          링크 복사
-        </StCopyButton>
-      </StButtonContainer>
+      <p>본 화면을 캡처해 주세요!</p>
+      <StCopyButton onClick={handleCopy}>
+        <img src={icCopy} alt="" />
+        링크 공유하기
+      </StCopyButton>
     </StResult>
   );
 }
@@ -82,6 +53,12 @@ const StResult = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  & > p {
+    margin: 3.2rem auto;
+    color: ${COLOR.GRAY_60};
+    ${FONT_STYLES.M_16}
+  }
 `;
 
 const StContent = styled.div`
@@ -96,7 +73,7 @@ const StContent = styled.div`
   }
 
   h1 {
-    margin: 1.6rem 0 9.6rem 0;
+    margin-top: 1.6rem;
     ${FONT_STYLES.SB_25}
   }
 `;
@@ -109,31 +86,18 @@ const StImageWrapper = styled.div`
   }
 `;
 
-const StButtonContainer = styled.div`
+const StCopyButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.2rem;
-  width: 100%;
-  padding-bottom: 8rem;
-`;
-
-const StButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 15.6rem;
+  width: 16.8rem;
+  margin-bottom: 9rem;
   text-align: center;
+  background-color: ${COLOR.GRAY_80};
+  color: ${COLOR.GRAY_10};
+  ${FONT_STYLES.SB_17}
 
   & > img {
-    margin-right: 0.8rem;
+    margin-right: 0.6rem;
   }
-`;
-
-const StDownloadButton = styled(StButton)`
-  background-color: ${COLOR.GRAY_80};
-`;
-
-const StCopyButton = styled(StButton)`
-  background-color: ${COLOR.MAIN_BLUE};
 `;
