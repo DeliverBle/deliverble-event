@@ -15,7 +15,7 @@ function BrowserSetter() {
     if (!isIOS) {
       if (agent.indexOf('kakao') > -1 || agent.indexOf('instagram') > -1) {
         if (agent.includes('kakao')) {
-          window.location.href = 'kakaotalk://inappbrowser/close';
+          window.location.href = 'googlechrome://navigate?url=' + link;
         } else if (agent.includes('instagram')) {
           window.close();
         }
